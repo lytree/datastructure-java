@@ -1,8 +1,10 @@
 package top.lytree.leetcode.base;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import top.lytree.json.JSONArray;
 
-import com.eclipsesource.json.Json;
-import com.eclipsesource.json.JsonArray;
+import java.util.Arrays;
 
 public class Utils {
 
@@ -50,15 +52,15 @@ public class Utils {
     }
 
     public static int[][] stringToInt2dArray(String input) {
-        JsonArray jsonArray = Json.parse(input).asArray();
-        if (jsonArray.size() == 0) {
+        ArrayNode nodes = JSONArray.parseJSONArray(input);
+        if (nodes.size() == 0) {
             return new int[0][0];
         }
 
-        int[][] arr = new int[jsonArray.size()][];
+        int[][] arr = new int[nodes.size()][];
         for (int i = 0; i < arr.length; i++) {
-            JsonArray cols = jsonArray.get(i).asArray();
-            arr[i] = stringToIntegerArray(cols.toString());
+            JsonNode node = nodes.get(i);
+            arr[i] = stringToIntegerArray(node.toString());
         }
         return arr;
     }
@@ -73,7 +75,7 @@ public class Utils {
 
         StringBuilder sb = new StringBuilder("[");
         for (int[] item : array) {
-            sb.append(item);
+            sb.append(Arrays.toString(item));
             sb.append(",");
         }
 
