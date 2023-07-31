@@ -73,17 +73,50 @@ public final class SortingAlgorithm {
     /**
      * 快排
      *
+     * @param array
+     * @return
+     */
+    public static int[] quickSort(int[] array) {
+        quickSort(array, 0, array.length - 1);
+        return array;
+    }
+
+    /**
+     * 快排
+     *
      * @param array 数组
      * @param l     左边界
      * @param r     右边界
-     * @return
      */
-    public static int[] quickSort(int[] array, int l, int r) {
-        if (isEmpty(array)) return array;
+    private static void quickSort(int[] array, int l, int r) {
+        if (isEmpty(array)) return;
         int arrayLength = array.length;
+        int i = l;
+        int j = r;
         int point = (r + l) / 2;
-
-        return array;
+        while (i < j) {
+            while (array[point] < array[j]) {
+                j--;
+            }
+            while (array[point] > array[i]) {
+                i++;
+            }
+            if (i <= j) {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        //中间值左边
+        if (l < j) {
+            quickSort(array, l, j);
+        }
+        //中间值右边
+        if (r > i) {
+            quickSort(array, i, r);
+        }
     }
 
     private static boolean isEmpty(int[] array) {

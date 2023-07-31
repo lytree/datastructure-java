@@ -18,6 +18,7 @@ public class SortTest {
         int[] sort = SortingAlgorithm.selectSort(numArray);
         System.out.println(Arrays.toString(sort));
     }
+
     @Test
     public void bubbleSort() {
         int[] numArray = getNumArray();
@@ -25,11 +26,20 @@ public class SortTest {
         int[] sort = SortingAlgorithm.bubbleSort(numArray);
         System.out.println(Arrays.toString(sort));
     }
+
     @Test
     public void insertionSort() {
         int[] numArray = getNumArray();
         System.out.println(Arrays.toString(numArray));
         int[] sort = SortingAlgorithm.insertionSort(numArray);
+        System.out.println(Arrays.toString(sort));
+    }
+
+    @Test
+    public void quickSort() {
+        int[] numArray = getNumArray();
+        System.out.println(Arrays.toString(numArray));
+        int[] sort = SortingAlgorithm.quickSort(numArray);
         System.out.println(Arrays.toString(sort));
     }
 }
